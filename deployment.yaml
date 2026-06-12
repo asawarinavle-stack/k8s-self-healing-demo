@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selfheal-app
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: selfheal
+
+  template:
+    metadata:
+      labels:
+        app: selfheal
+
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+
+        ports:
+        - containerPort: 80
